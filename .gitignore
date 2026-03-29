@@ -1,15 +1,3 @@
-# Magi — ferramentas locais (invisíveis no GitHub)
-.claude/
-CLAUDE.md
-AGENTS.md
-.project-config.json
-pf-progress.md
-.magi/
-session-state.md
-tasks.md
-tasks.json
-docs/specs/
-
 # Ambiente
 .env
 .env.*
@@ -35,6 +23,3 @@ htmlcov/
 !.mvn/
 !mvnw
 !mvnw.cmd
-
-# TDD backup (referência local)
-backup/
