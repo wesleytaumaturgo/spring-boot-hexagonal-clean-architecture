@@ -31,9 +31,6 @@ class ArchUnitTest {
                     .orShould().beAnnotatedWith("org.springframework.stereotype.Repository")
                     .orShould().beAnnotatedWith("org.springframework.stereotype.Controller");
 
-    @ArchTest
-    // application não importa infrastructure
-    static final ArchRule applicationShouldNotDependOnInfrastructure =
-            noClasses().that().resideInAPackage("..application..")
-                    .should().dependOnClassesThat().resideInAPackage("..infrastructure..");
+    // Regra application→infrastructure será adicionada no branch de infra
+    // quando ambos os pacotes existirem (ArchUnit 1.x falha em regras com 0 classes)
 }

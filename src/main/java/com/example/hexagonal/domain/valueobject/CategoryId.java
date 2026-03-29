@@ -8,14 +8,21 @@ public final class CategoryId {
     private final UUID value;
 
     public CategoryId(UUID value) {
-        // stub — sem validação (RED)
+        if (value == null) {
+            throw new IllegalArgumentException("CategoryId must be a valid UUID");
+        }
         this.value = value;
     }
 
     public static CategoryId of(String uuidString) {
-        // stub — sem validação (RED)
-        if (uuidString == null || uuidString.isBlank()) return new CategoryId(null);
-        return new CategoryId(UUID.fromString(uuidString));
+        if (uuidString == null || uuidString.isBlank()) {
+            throw new IllegalArgumentException("CategoryId must be a valid UUID");
+        }
+        try {
+            return new CategoryId(UUID.fromString(uuidString));
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("CategoryId must be a valid UUID");
+        }
     }
 
     public UUID getValue() {
@@ -32,5 +39,10 @@ public final class CategoryId {
     @Override
     public int hashCode() {
         return Objects.hash(value);
+    }
+
+    @Override
+    public String toString() {
+        return value.toString();
     }
 }

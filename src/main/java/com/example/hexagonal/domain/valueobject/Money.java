@@ -1,6 +1,7 @@
 package com.example.hexagonal.domain.valueobject;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Objects;
 
 public final class Money {
@@ -8,8 +9,13 @@ public final class Money {
     private final BigDecimal amount;
 
     public Money(BigDecimal amount) {
-        // stub — sem validação (RED)
-        this.amount = amount;
+        if (amount == null) {
+            throw new IllegalArgumentException("Money amount must not be null");
+        }
+        if (amount.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalArgumentException("Money amount must be positive");
+        }
+        this.amount = amount.setScale(2, RoundingMode.HALF_UP);
     }
 
     public Money(double amount) {
@@ -30,5 +36,10 @@ public final class Money {
     @Override
     public int hashCode() {
         return Objects.hash(amount);
+    }
+
+    @Override
+    public String toString() {
+        return amount.toPlainString();
     }
 }

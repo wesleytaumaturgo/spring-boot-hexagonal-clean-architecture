@@ -1,5 +1,6 @@
 package com.example.hexagonal.domain.model;
 
+import com.example.hexagonal.domain.exception.ProductAlreadyInactiveException;
 import com.example.hexagonal.domain.valueobject.CategoryId;
 import com.example.hexagonal.domain.valueobject.Money;
 import com.example.hexagonal.domain.valueobject.ProductName;
@@ -35,7 +36,9 @@ public class Product {
     }
 
     public void deactivate() {
-        // stub — sem validação (RED): não lança exceção ainda
+        if (this.status == ProductStatus.INACTIVE) {
+            throw new ProductAlreadyInactiveException(this.id);
+        }
         this.status = ProductStatus.INACTIVE;
         this.updatedAt = LocalDateTime.now();
     }
