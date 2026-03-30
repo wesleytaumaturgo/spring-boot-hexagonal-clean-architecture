@@ -17,5 +17,5 @@ spring:
 
 logging:
   level:
-    com.example.hexagonal: WARN
+    com.wesleytaumaturgo.hexagonal: WARN
     org.hibernate: WARN
