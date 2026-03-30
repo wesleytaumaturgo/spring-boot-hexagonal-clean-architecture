@@ -37,4 +37,4 @@ springdoc:
 
 logging:
   level:
-    com.example.hexagonal: INFO
+    com.wesleytaumaturgo.hexagonal: INFO
