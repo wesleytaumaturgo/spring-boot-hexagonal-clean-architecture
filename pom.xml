@@ -23,7 +23,7 @@
     <properties>
         <java.version>21</java.version>
         <archunit.version>1.4.1</archunit.version>
-        <springdoc.version>2.5.0</springdoc.version>
+        <springdoc.version>3.0.3</springdoc.version>
     </properties>
 
     <dependencies>
